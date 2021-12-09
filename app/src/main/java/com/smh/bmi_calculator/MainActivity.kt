@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
             val weight: Int = weightEditText.text.toString().toInt()
 
             val intent = Intent(this, ResultActivity::class.java) // intent -> 나 여기서 ResultActivity로 갈래
+
             startActivity(intent) // intent 시작 , manifests 추가하는거 잊지말기.
 
         }
