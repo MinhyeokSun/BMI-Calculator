@@ -1,10 +1,12 @@
 package com.smh.bmi_calculator
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,13 +19,18 @@ class MainActivity : AppCompatActivity() {
         val resultButton = findViewById<Button>(R.id.resultButton)
 
         resultButton.setOnClickListener {
-            Log.d("MainActivity","ResultButton이 클릭되었습니다.")
+            if(heightEditText.text.isEmpty() || weightEditText.text.isEmpty()) {
+                Toast.makeText(this, "빈 값이 있습니다.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            } // 예외처리
+            // 이 아래로는 절대 빈 값이 올 수 없음.
 
             val height: Int = heightEditText.text.toString().toInt()
             val weight: Int = weightEditText.text.toString().toInt()
 
-            Log.d("MainActivity","height $height, weight$weight")
-            //앱 죽음. 빈 값을 넣으면 Int로 변환되지 않음. 조건을 달아줘야겠음.
+            val intent = Intent(this, ResultActivity::class.java) // intent -> 나 여기서 ResultActivity로 갈래
+            startActivity(intent) // intent 시작 , manifests 추가하는거 잊지말기.
+
         }
     }
 }
