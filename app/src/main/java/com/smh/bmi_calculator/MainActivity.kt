@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity() {
 
             val intent = Intent(this, ResultActivity::class.java) // intent -> 나 여기서 ResultActivity로 갈래
 
+            intent.putExtra("height", height)
+            intent.putExtra("weight", weight)
+
             startActivity(intent) // intent 시작 , manifests 추가하는거 잊지말기.
 
         }
